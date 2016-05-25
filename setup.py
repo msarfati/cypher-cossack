@@ -11,7 +11,7 @@ def read(fname):
     return open(fpath(fname)).read()
 
 
-file_text = read(fpath('./cutlass/__meta__.py'))
+file_text = read(fpath('./cypher_cossack/__meta__.py'))
 
 
 def grep(attrname):
@@ -37,6 +37,6 @@ setup(
     author=grep('__author__'),
     author_email=grep('__email__'),
     install_requires=read('dependencies.txt'),
-    license="MIT",
+    license="GPLv3",
     zip_safe=False,
 )
