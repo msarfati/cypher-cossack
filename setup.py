@@ -22,10 +22,10 @@ def grep(attrname):
 
 setup(
     version=grep('__version__'),
-    name='Cutlass',
+    name='The Cypher Cossack',
     description="",
     packages=[
-        'cutlass',
+        'cypher_cossack',
     ],
     scripts=[
         "bin/manage.py",

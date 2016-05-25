@@ -12,7 +12,7 @@ from flask.ext.restful import Api
 rest_api = Api()
 
 
-class Cutlass:
+class CypherCossack:
 
     def __init__(self, app=None):
         self.app = app
@@ -73,6 +73,6 @@ def create_app():
     """
     global app_instance
     if not app_instance:
-        app_instance = Cutlass()
+        app_instance = CypherCossack()
         app_instance.init_app()
     return app_instance.app

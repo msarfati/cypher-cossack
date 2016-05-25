@@ -1,4 +1,4 @@
-# Cutlass
+# The Cypher Cossack
 Michael Sarfati, 2016
 
 A web and RESTful front-end for the various ciphers.

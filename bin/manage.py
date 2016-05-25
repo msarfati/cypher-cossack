@@ -2,7 +2,7 @@
 import sys
 sys.path.insert(0, '.')
 
-from cutlass import create_app
+from cypher_cossack import create_app
 from flask.ext.script import Manager, Shell, Server
 
 app = create_app()
