@@ -3,18 +3,23 @@
   <head>
     <title>The Cypher Cossack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-      .container {
-        max-width: 500px;
-        padding-top: 100px;
-      }
-    </style>
+    <link href="{{ url_for('frontend.static', filename='css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ url_for('frontend.static', filename='css/bootstrap-theme.min.css') }}" rel="stylesheet" media="screen">
   </head>
   <body>
-    <div class="container">
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Title</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul>
+      </div>
     </div>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="{{ url_for('frontend.static', filename='js/bootstrap.min.js') }}"></script>
   </body>
 </html>

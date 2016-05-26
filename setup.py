@@ -22,7 +22,7 @@ def grep(attrname):
 
 setup(
     version=grep('__version__'),
-    name='The Cypher Cossack',
+    name='Cypher Cossack',
     description="",
     packages=[
         'cypher_cossack',
