@@ -8,16 +8,31 @@
   </head>
   <body>
 
-    <div class="navbar">
-      <div class="navbar-inner">
-      <a class="brand" href="#">The Cypher Cossack</a>
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
+    <ul class="nav nav-tabs">
+      <li class="dropdown">
+        <a href="/">Home</a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle"
+           data-toggle="dropdown"
+           href="#">
+            Ciphers
+            <b class="caret"></b>
+          </a>
+        <ul class="dropdown-menu">
+          <!-- links -->
+          <li><a href="#">RC4</a></li>
+          <li><a href="#">TEA</a></li>
         </ul>
-      </div>
-    </div>
+      </li>
+      <li class="dropdown">
+        <a href="#">API</a>
+      </li>
+      <li class="dropdown">
+        <a href="#">About</a>
+      </li>
+    </ul>
+
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{ url_for('frontend.static', filename='js/bootstrap.min.js') }}"></script>
