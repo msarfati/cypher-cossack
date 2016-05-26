@@ -1,1 +1,1 @@
-from rc4 import RC4
+from .rc4 import RC4
