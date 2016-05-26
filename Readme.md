@@ -1,7 +1,14 @@
 # The Cypher Cossack
-Michael Sarfati, 2016
+Michael Sarfati, May 2016
 
 A web and RESTful front-end for the various ciphers.
+
+# Installation
+```bash
+git clone git@github.com:msarfati/cypher-cossack.git
+mkvirtualenv -p `which python3` -a .
+make install && make server
+```
 
 # Features
 ## Web GUI
@@ -20,4 +27,4 @@ A web and RESTful front-end for the various ciphers.
 
 # Dependencies
 * [BOOTSTRA.386](https://github.com/kristopolous/BOOTSTRA.386)
-* 
+* virtualenvwrapper
