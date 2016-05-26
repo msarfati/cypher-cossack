@@ -8,15 +8,15 @@ A web and RESTful front-end for the various ciphers.
 
 ## RESTful API
 - generate-key(s) - POST: {'s': "your salt"}
-    - api.cutlass.org/generate-key
-- encipher(k, m) - POST: {'k': "your key", "m", "your m"} 
-    - api.cutlass.org/{cipher}/encipher
+    - api.cypher-cossack.org/generate-key
+- encipher(k, m) - POST: {'k': "your key", "m", "your m"}
+    - api.cypher-cossack.org/{cipher}/encrypt
 - decipher(k, c)
-    - api.cutlass.org/{cipher}/decipher
-- list-ciphers() - Displays currently supported ciphers
-    - api.cutlass.org/list-ciphers
-- get-cipher(id) - Displays pseudocode for generation of a particular algorithm
-    - api.cutlass.org/get-cipher
+    - api.cypher-cossack.org/{cipher}/decrypt
+- list-ciphers() - Returns currently supported ciphers
+    - api.cypher-cossack.org/list-ciphers
+- get-cipher(id) - Returns metadata for a particular algorithm
+    - api.cypher-cossack.org/get-cipher
 
 # Dependencies
 * [BOOTSTRA.386](https://github.com/kristopolous/BOOTSTRA.386)

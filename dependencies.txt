@@ -4,6 +4,7 @@ decorator==4.0.9
 Flask==0.10.1
 flask-marshmallow==0.6.2
 Flask-RESTful==0.3.5
+Flask-Script==2.0.5
 Flask-Testing==0.4.2
 ipdb==0.10.0
 ipython==4.2.0

@@ -37,9 +37,8 @@ class CypherCossack:
         # self.init_api(init_api)
 
     def init_blueprints(self):
-        pass
-        # from .views.login_auth import login_auth
-        # self.app.register_blueprint(login_auth, url_prefix="/login")
+        from .views.frontend import frontend
+        self.app.register_blueprint(frontend, url_prefix="/")
 
     def init_logs(self):
         import logging
