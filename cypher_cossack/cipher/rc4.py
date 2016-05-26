@@ -8,6 +8,8 @@ class RC4(object):
     CF: Applied Cryptography, Chapter 17 by Bruce Scheneier
 
     CF: https://www.quora.com/Cryptography-What-is-an-intuitive-explanation-of-the-RC4-encryption-algorithm-and-its-weaknesses
+
+    TODO: Encrypting files (BytesIO), not just strings
     """
 
     def __init__(self, key="cypher-cossack"):
