@@ -6,7 +6,7 @@ A web and RESTful front-end for the various ciphers.
 # Installation
 ```bash
 git clone git@github.com:msarfati/cypher-cossack.git
-mkvirtualenv -p `which python3` -a .
+mkvirtualenv -p `which python3` -a . cypher-cossack
 make install && make server
 ```
 
