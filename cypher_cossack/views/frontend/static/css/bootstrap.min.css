@@ -1073,8 +1073,8 @@ body {
   font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 18px;
   line-height: 19px;
-  color: #bbbbbb;
-  background-color: #000084;
+  color: #33cc33;
+  background-color: #000;
 }
 input,
 button,
@@ -3350,10 +3350,10 @@ tbody.collapse.in {
   list-style: none;
   font-size: 18px;
   text-align: left;
-  background-color: #bbbbbb;
-  border: 2px solid #000000;
-  -webkit-box-shadow: 0px 0px 0 4px #bbbbbb;
-  box-shadow: 0px 0px 0 4px #bbbbbb;
+  background-color: #000;
+  border: 2px solid #33cc33;
+  -webkit-box-shadow: 0px 0px 0 4px #33cc33;
+  box-shadow: 0px 0px 0 4px #000;
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
@@ -3377,13 +3377,13 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 19px;
-  color: #000000;
+  color: #33cc33;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #bbbbbb;
+  color: #000;
   background-color: #000000;
 }
 .dropdown-menu > .active > a,

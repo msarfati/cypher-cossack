@@ -191,20 +191,20 @@
   margin-bottom: 20px;
   font-size: 18px;
   line-height: 20px;
-  color: #ffffff;
-  background-color: #003d3d;
-  border: 4px double #ffffff;
+  /*color: #33cc33;*/
+  background-color: #0e0e0e;
+  border: 4px double #33cc33;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
-  box-shadow: 0 0 0 4px #003d3d;
+  box-shadow: 0 0 0 4px #000;
 }
 
 .hero-unit h1 {
   margin-bottom: 20px;
   font-size: 18px;
   line-height: 1;
-  color: #ffffff;
+  color: #33cc33;
   text-align: center;
   text-decoration: blink;
 }
