@@ -33,8 +33,8 @@ class CypherCossack:
 
         self.init_schemas()
 
-        # from .api import init_api
-        # self.init_api(init_api)
+        from .api import init_api
+        self.init_api(init_api)
 
     def init_blueprints(self):
         from .views.frontend import frontend

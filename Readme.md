@@ -13,16 +13,16 @@ make install && make server
 # Features
 ## Web GUI
 
-## RESTful API
+## API
 - generate-key(s) - POST: {'s': "your salt"}
     - api.cypher-cossack.org/generate-key
-- encipher(k, m) - POST: {'k': "your key", "m", "your m"}
+- encrypt(k, m) - POST: {'k': "your key", "m", "your m"}
     - api.cypher-cossack.org/{cipher}/encrypt
-- decipher(k, c)
+- decrypt(k, c)
     - api.cypher-cossack.org/{cipher}/decrypt
 - list-ciphers() - Returns currently supported ciphers
     - api.cypher-cossack.org/list-ciphers
-- get-cipher(id) - Returns metadata for a particular algorithm
+- get-cipher(name) - Returns metadata for a particular algorithm
     - api.cypher-cossack.org/get-cipher
 
 # Dependencies
