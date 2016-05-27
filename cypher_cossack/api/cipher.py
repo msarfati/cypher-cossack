@@ -88,21 +88,27 @@ class CipherEncrypt(Resource):
             abort(404)
 
 
-# class CipherEncrypt(Resource):
-#     """
-#     Operations dealing with individual ciphers
-#     """
-#     # decorators = [auth.login_required]
+class CipherDecrypt(Resource):
+    """
+    Handles looking up the cipher, and decryptnig the ciphertext.
+    """
+    def post(self, cipher):
+        cipher = cipher_alg_lookup_validator(cipher)
 
-#     def post(self, cipher):
-#         # import ipdb; ipdb.set_trace()
-#         try:
-#             cipher = cipher_alg_lookup[cipher]
-#         except:
-#             return abort(404, message="'{}' is invalid. Please get the current list of ciphers".format(cipher), rel=url_for(Ciphers.get))
+        # import ipdb; ipdb.set_trace()
+        parser = reqparse.RequestParser()
+        parser.add_argument('key', type=str, help='Secret key, used to encrypt your message.')
+        parser.add_argument('message', type=str, help='The ciphertext that will be decrypted')
+        args = parser.parse_args()
 
-#         try:
-#             # import ipdb; ipdb.set_trace()
-#             return jsonify(**{k: v for k, v in cipher.items() if k[0] is not "_"})
-#         except:
-#             abort(404)
+        cipher_alg = cipher['_algorithm']
+        cipher_alg = cipher_alg(key=args['key'])
+        try:
+            # import ipdb; ipdb.set_trace()
+            return jsonify(dict(
+                ciphertext=args['message'],
+                key=args['key'],
+                plaintext=cipher_alg.decrypt(ciphertext=args['message']),
+                cipher=cipher['name']))
+        except:
+            abort(404)
