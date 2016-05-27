@@ -1,6 +1,7 @@
 from .. import cipher as cipher_alg
-from flask import jsonify, url_for
+from flask import jsonify, request, url_for
 from flask.ext.restful import abort, Api, Resource, reqparse, fields, marshal
+import marshmallow as ma
 
 cipher_alg_lookup = {
     "rc4": {
@@ -16,6 +17,13 @@ cipher_alg_lookup = {
         "wiki": "https://en.wikipedia.org/wiki/Tiny_Encryption_Algorithm",
     }
 }
+
+
+def cipher_alg_lookup_validator(cipher):
+    try:
+        return cipher_alg_lookup[cipher]
+    except:
+        return abort(404, message="Cipher '{}' is invalid. Please get the current list of ciphers".format(cipher))
 
 
 class Ciphers(Resource):
@@ -45,10 +53,7 @@ class Cipher(Resource):
 
     def get(self, cipher):
         # import ipdb; ipdb.set_trace()
-        try:
-            cipher = cipher_alg_lookup[cipher]
-        except:
-            return abort(404, message="'{}' is invalid. Please get the current list of ciphers".format(cipher), rel=url_for(Ciphers.get))
+        cipher = cipher_alg_lookup_validator(cipher)
 
         try:
             # import ipdb; ipdb.set_trace()
@@ -57,24 +62,30 @@ class Cipher(Resource):
             abort(404)
 
 
-# class CipherEncrypt(Resource):
-#     """
-#     Operations dealing with individual ciphers
-#     """
-#     # decorators = [auth.login_required]
+class CipherEncrypt(Resource):
+    """
+    Handles looking up the cipher, and encrypting the plaintext.
+    """
+    def post(self, cipher):
+        cipher = cipher_alg_lookup_validator(cipher)
 
-#     def post(self, cipher):
-#         # import ipdb; ipdb.set_trace()
-#         try:
-#             cipher = cipher_alg_lookup[cipher]
-#         except:
-#             return abort(404, message="'{}' is invalid. Please get the current list of ciphers".format(cipher), rel=url_for(Ciphers.get))
+        # import ipdb; ipdb.set_trace()
+        parser = reqparse.RequestParser()
+        parser.add_argument('key', type=str, help='Secret key, used to encrypt your message.')
+        parser.add_argument('message', type=str, help='The plaintext that will be encrypted')
+        args = parser.parse_args()
 
-#         try:
-#             # import ipdb; ipdb.set_trace()
-#             return jsonify(**{k: v for k, v in cipher.items() if k[0] is not "_"})
-#         except:
-#             abort(404)
+        cipher_alg = cipher['_algorithm']
+        cipher_alg = cipher_alg(key=args['key'])
+        try:
+            # import ipdb; ipdb.set_trace()
+            return jsonify(dict(
+                ciphertext=cipher_alg.encrypt(plaintext=args['message']),
+                key=args['key'],
+                plaintext=args['message'],
+                cipher=cipher['name']))
+        except:
+            abort(404)
 
 
 # class CipherEncrypt(Resource):

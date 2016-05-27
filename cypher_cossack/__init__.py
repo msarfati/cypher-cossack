@@ -5,8 +5,8 @@ app_instance = None
 # from flask.ext.httpauth import HTTPBasicAuth
 # auth = HTTPBasicAuth()
 
-# from flask_marshmallow import Marshmallow
-# ma = Marshmallow()
+from flask_marshmallow import Marshmallow
+ma = Marshmallow()
 
 from flask.ext.restful import Api
 rest_api = Api()
@@ -34,6 +34,8 @@ class CypherCossack:
         from .api import init_api
         self.init_api(init_api)
 
+        self.init_schemas()
+
     def init_blueprints(self):
         from .views.frontend import frontend
         self.app.register_blueprint(frontend)
@@ -57,6 +59,9 @@ class CypherCossack:
             api_map(rest_api)
         rest_api.init_app(self.app)
         return rest_api
+
+    def init_schemas(self):
+        ma.init_app(self.app)
 
 
 def create_app():
