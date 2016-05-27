@@ -11,4 +11,4 @@ frontend = flask.Blueprint(
 
 @frontend.route('/')
 def index():
-    return flask.render_template('base.html')
+    return flask.render_template('index.html')
