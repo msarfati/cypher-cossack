@@ -1,6 +1,3 @@
-from functools import reduce
-
-
 class RC4(object):
     """
     Python implementation of the RC4 Cipher.
