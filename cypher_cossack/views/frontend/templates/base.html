@@ -29,7 +29,7 @@
           </a>
         <ul class="dropdown-menu">
           <!-- links -->
-          <li class="active"><a href="#">RC4</a></li>
+          <li class="active"><a href="#rc4">RC4</a></li>
           <li><a href="#">TEA (Coming soon)</a></li>
         </ul>
       </li>
@@ -39,15 +39,38 @@
       <li class="dropdown">
         <a href="#">About</a>
       </li>
+      <li class="dropdown">
+        <a href="#mode">Mode: Plaintext-to-Ciphertext</a>
+      </li>
     </ul>
 
     <div class="container">
     {% block page_body %}
+
+    <div class="io-panes">
+        <div class="message-input-pane" contenteditable="true">< Type your message here. > </div>
+        <div class="key-container">Key: <div class="key-input" contenteditable="true"></div></div>
+        <div class="system-output-pane" contenteditable="false">Output.</div>
+    </div>
+
     {% endblock %}
     </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{ url_for('frontend.static', filename='js/bootstrap.min.js') }}"></script>
   </body>
-{% block scripts %}{% endblock %}
+{% block scripts %}
+    <script type="text/javascript">
+
+    // Click to delete default text
+    $('div.message-input-pane').on( 'click', function( event ) {
+      $('div.message-input-pane').html("")
+    });
+
+    // Click to delete default text
+    $('div.message-input-pane').on( 'click', function( event ) {
+      $('div.message-input-pane').html("")
+    });
+    </script>
+{% endblock %}
 </html>

@@ -1,0 +1,18 @@
+{
+  "name": "cypher-cossack",
+  "homepage": "https://github.com/msarfati/cypher-cossack",
+  "authors": [
+    "Michael Sarfati <michael.sarfati@utoronto.ca>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

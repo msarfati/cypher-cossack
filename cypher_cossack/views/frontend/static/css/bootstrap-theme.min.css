@@ -245,3 +245,38 @@
 .container-fluid:after {
   clear: both;
 }
+
+.io-panes {
+
+}
+
+.message-input-pane {
+  resize: vertical;
+  border: 4px double #33cc33;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  box-shadow: 0 0 0 4px #000;
+}
+
+.key-container {
+  resize: vertical;
+  border: 4px double #33cc33;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  box-shadow: 0 0 0 4px #000;
+}
+
+.system-output-pane {
+  resize: vertical;
+  border: 4px double #33cc33;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  box-shadow: 0 0 0 4px #000;
+}
+
+.nav-tabs > #mode {
+  color: yellow;
+}
