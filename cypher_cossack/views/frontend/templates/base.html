@@ -48,9 +48,9 @@
     {% block page_body %}
 
     <div class="io-panes">
-        <div class="message-input-pane" contenteditable="true">< Type your message here. > </div>
-        <div class="key-container">Key: <div class="key-input" contenteditable="true"></div></div>
-        <div class="system-output-pane" contenteditable="false">Output.</div>
+        <div class="message-input-pane" contenteditable="true">Type your message here.</div>
+        <div class="key-container">Key: <div class="key-input" contenteditable="true">cipher-cossack</div></div>
+        <div class="system-output-pane" contenteditable="false">Output</div>
     </div>
 
     {% endblock %}
@@ -79,15 +79,19 @@
       $('div.message-input-pane').html("")
     });
 
-    // Encipher & Decipher
+    // Encrypt & Decrypt functionality for RC4
     $('a[href="#rc4"]').on( 'click', function( event ) {
       $.post(
         "/api/ciphers/rc4/" + mode,
-        {key: "asdf12345", message: "Hello World"},
+        {key: $("div.key-input").text(), message: $("div.message-input-pane").text()},
         function(data, status) {
-          var result = data;
-          console.log(data['plaintext']);
-          $('div.system-output-pane').html(mode == "decrypt" ? data["ciphertext"] : data["plaintext"]);
+          if (mode == "encrypt") {
+            var result = data["ciphertext"];
+          } else if (mode == "decrypt") {
+            var result = data["plaintext"];
+          }
+          // console.log(data['plaintext']);
+          $('div.system-output-pane').html(result);
         });
     });
     </script>
