@@ -61,9 +61,9 @@
   </body>
 {% block scripts %}
     <script type="text/javascript">
-    var mode = "encrypt";
 
     // Handles the Mode
+    var mode = "encrypt";
     $('a[href="#mode"]').click(function(){
       if (mode == "decrypt") {
         $('a[href="#mode"]').html('Mode: Plaintext-to-Ciphertext');
@@ -77,6 +77,18 @@
     // Click to delete default text
     $('div.message-input-pane').one( 'click', function( event ) {
       $('div.message-input-pane').html("")
+    });
+
+    // Encipher & Decipher
+    $('a[href="#rc4"]').on( 'click', function( event ) {
+      $.post(
+        "/api/ciphers/rc4/" + mode,
+        {key: "asdf12345", message: "Hello World"},
+        function(data, status) {
+          var result = data;
+          console.log(data['plaintext']);
+          $('div.system-output-pane').html(mode == "decrypt" ? data["ciphertext"] : data["plaintext"]);
+        });
     });
     </script>
 {% endblock %}
