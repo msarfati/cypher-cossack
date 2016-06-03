@@ -61,14 +61,21 @@
   </body>
 {% block scripts %}
     <script type="text/javascript">
+    var mode = "encrypt";
 
-    // Click to delete default text
-    $('div.message-input-pane').on( 'click', function( event ) {
-      $('div.message-input-pane').html("")
+    // Handles the Mode
+    $('a[href="#mode"]').click(function(){
+      if (mode == "decrypt") {
+        $('a[href="#mode"]').html('Mode: Plaintext-to-Ciphertext');
+        mode = "encrypt";
+      } else if (mode == "encrypt") {
+        $('a[href="#mode"]').html('Mode: Ciphertext-to-Plaintext');
+        mode = "decrypt";
+      }
     });
 
     // Click to delete default text
-    $('div.message-input-pane').on( 'click', function( event ) {
+    $('div.message-input-pane').one( 'click', function( event ) {
       $('div.message-input-pane').html("")
     });
     </script>
