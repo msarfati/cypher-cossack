@@ -250,8 +250,8 @@
 
 }
 
-.message-input-pane {
-  resize: vertical;
+.message-input-container {
+  height: 100px;
   border: 4px double #33cc33;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
@@ -268,8 +268,9 @@
   box-shadow: 0 0 0 4px #000;
 }
 
-.system-output-pane {
+.system-output-container {
   resize: vertical;
+  height: 100px;
   border: 4px double #33cc33;
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
@@ -279,4 +280,14 @@
 
 .nav-tabs > #mode {
   color: yellow;
+}
+
+.message-input-container::first-letter,
+.key-container::first-letter,
+.system-output-container::first-letter {
+    color: #ff5555;
+}
+
+.about-unit {
+  display:none;
 }

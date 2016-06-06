@@ -17,43 +17,42 @@
           </a>
         <ul class="dropdown-menu">
           <!-- links -->
-          <li><a href="#">Open</a></li>
-          <li><a href="#">Save to file</a></li>
+          <!-- <li><a href="#open">Open</a></li> -->
+          <li><a href="#save-to-file">Save to file</a></li>
         </ul>
       <li class="dropdown">
         <a class="dropdown-toggle"
            data-toggle="dropdown"
            href="#">
-            Ciphers
+            Cipher: <div class="current-cipher" style="display: inline">RC4</div>
             <b class="caret"></b>
           </a>
         <ul class="dropdown-menu">
           <!-- links -->
           <li class="active"><a href="#rc4">RC4</a></li>
-          <li><a href="#">TEA (Coming soon)</a></li>
+          <li><a href="#tea">TEA (Coming soon)</a></li>
         </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#mode">Mode: Plaintext-to-Ciphertext</a>
       </li>
       <li class="dropdown">
         <a href="#">API</a>
       </li>
       <li class="dropdown">
-        <a href="#">About</a>
-      </li>
-      <li class="dropdown">
-        <a href="#mode">Mode: Plaintext-to-Ciphertext</a>
+        <a href="#about">About</a>
       </li>
     </ul>
 
     <div class="container">
     {% block page_body %}
-
     <div class="io-panes">
-        <div class="message-input-pane" contenteditable="true">Type your message here.</div>
-        <div class="key-container">Key: <div class="key-input" contenteditable="true">cipher-cossack</div></div>
-        <div class="system-output-pane" contenteditable="false">Output</div>
+        <div class="message-input-container">MSG.IN> <div class="message-input" contenteditable="true" style="display: inline"> Type your message here.</div></div>
+        <div class="key-container">KEY.IN> <div class="key-input" contenteditable="true" style="display: inline">cypher-cossack</div></div>
+        <button class="btn encrypt-decrypt-btn"><div class="encrypt-decrypt-btn-text" style="display: inline">Encrypt</div></button>
+        <div class="system-output-container">MSG.OUT> <div class="system-output" contenteditable="true" style="display: inline"></div></div>
     </div>
-
-    {% endblock %}
+      {% endblock %}
     </div>
 
     <script src="http://code.jquery.com/jquery.js"></script>
@@ -61,29 +60,42 @@
   </body>
 {% block scripts %}
     <script type="text/javascript">
+    // Handles the cipher type
+    var cipher = "rc4";
+    $('a[href="#rc4"]').click(function(){
+      var cipher = "rc4";
+      $(".current-cipher").html('RC4');
+    });
+    // $('a[href="#tea"]').click(function(){
+    //   var cipher = "tea";
+    //   $(".current-cipher").html('TEA');
+    // });
 
     // Handles the Mode
     var mode = "encrypt";
     $('a[href="#mode"]').click(function(){
       if (mode == "decrypt") {
-        $('a[href="#mode"]').html('Mode: Plaintext-to-Ciphertext');
         mode = "encrypt";
+        $('a[href="#mode"]').html('Mode: Plaintext-to-Ciphertext');
+        $(".encrypt-decrypt-btn-text").html('Encrypt');
       } else if (mode == "encrypt") {
-        $('a[href="#mode"]').html('Mode: Ciphertext-to-Plaintext');
         mode = "decrypt";
+        $('a[href="#mode"]').html('Mode: Ciphertext-to-Plaintext');
+        $(".encrypt-decrypt-btn-text").html('Decrypt');
       }
     });
 
     // Click to delete default text
-    $('div.message-input-pane').one( 'click', function( event ) {
-      $('div.message-input-pane').html("")
+    $('div.message-input').one( 'click', function( event ) {
+      $('div.message-input').html("")
     });
 
+    // CIPHERS menu
     // Encrypt & Decrypt functionality for RC4
-    $('a[href="#rc4"]').on( 'click', function( event ) {
+    $('.encrypt-decrypt-btn').on( 'click', function( event ) {
       $.post(
-        "/api/ciphers/rc4/" + mode,
-        {key: $("div.key-input").text(), message: $("div.message-input-pane").text()},
+        "/api/ciphers/" + cipher + "/" + mode,
+        {key: $("div.key-input").text(), message: $("div.message-input").text()},
         function(data, status) {
           if (mode == "encrypt") {
             var result = data["ciphertext"];
@@ -91,9 +103,10 @@
             var result = data["plaintext"];
           }
           // console.log(data['plaintext']);
-          $('div.system-output-pane').html(result);
+          $('div.system-output').html(result);
         });
     });
+
     </script>
 {% endblock %}
 </html>

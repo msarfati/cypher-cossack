@@ -2908,6 +2908,8 @@ select[multiple].form-group-lg .form-control {
   touch-action: manipulation;
   background-image: none;
   padding: 0 9.5px;
+  background-color: #33CC33;
+  color: #000000;
   -webkit-box-shadow: 9.5px 9.5px 0 rgb(0,0,0);
   box-shadow: 9.5px 9.5px 0 rgb(0,0,0);
   cursor: default;
