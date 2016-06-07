@@ -1,7 +1,6 @@
 from .. import cipher as cipher_alg
 from flask import jsonify, request, url_for
 from flask.ext.restful import abort, Api, Resource, reqparse, fields, marshal
-import marshmallow as ma
 
 cipher_alg_lookup = {
     "rc4": {

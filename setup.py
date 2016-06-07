@@ -26,6 +26,9 @@ setup(
     description="",
     packages=[
         'cypher_cossack',
+        'cypher_cossack.api',
+        'cypher_cossack.tests',
+        'cypher_cossack.views',
     ],
     scripts=[
         "bin/manage.py",
