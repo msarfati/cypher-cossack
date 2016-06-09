@@ -36,7 +36,7 @@ class Ciphers(Resource):
         Returns a list of currently supported ciphers.
         """
         try:
-            return jsonify(ciphers=[*cipher_alg_lookup.keys()])
+            return jsonify(ciphers=list(cipher_alg_lookup.keys()))
         except:
             abort(404)
 

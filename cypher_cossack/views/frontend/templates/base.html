@@ -19,6 +19,7 @@
           <!-- links -->
           <!-- <li><a href="#open">Open</a></li> -->
           <li><a href="#save-to-file">Save to file</a></li>
+          <!-- iFrame goes here -->
         </ul>
       <li class="dropdown">
         <a class="dropdown-toggle"
@@ -95,7 +96,7 @@
     $('.encrypt-decrypt-btn').on( 'click', function( event ) {
       $.post(
         "/api/ciphers/" + cipher + "/" + mode,
-        {key: $("div.key-input").text(), message: $("div.message-input").text()},
+        {key: $("div.key-input").text().trim(), message: $("div.message-input").text().trim()},
         function(data, status) {
           if (mode == "encrypt") {
             var result = data["ciphertext"];

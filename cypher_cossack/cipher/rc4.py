@@ -25,7 +25,7 @@ class RC4(object):
 
         Implements Shannon principles of 'confusion' -- obscuring the relationship between the ciphertext and the actual key
         """
-        s = [*range(256)]
+        s = list(range(256))
         j = 0
         for i in range(len(s)):
             j = (j + i + ord(key[i % len(key)])) % 256
